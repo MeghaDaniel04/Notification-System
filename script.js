@@ -26,7 +26,33 @@ if ("Notification" in window) {
    
 }
 
-
+if (annyang) {
+    // Let's define our first command. First the text we expect, and then the function it should call
+    var commands = {
+      'write title *tag': function(variable) {
+        let title = document.getElementById("title");
+        title.value = variable;
+      },
+      'write description *tag': function(variable) {
+        let description = document.getElementById("description");
+        description.value = variable;
+      },
+      'write date *tag': function(variable) {
+        let date = document.getElementById("date");
+        date.value = variable;
+      },
+      'write time *tag': function(variable) {
+        let time = document.getElementById("time");
+        time.value = variable;
+      }
+    };
+  
+    // Add our commands to annyang
+    annyang.addCommands(commands);
+  
+    // Start listening. You can call this here, or attach this call to an event, button, etc.
+    annyang.start();
+}
 
 var timeoutIds = [];
 
